@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myControll">
+        <input type="text" placeholder="请输入姓名" ng-model="name" >
+        <div>累计变化的次数:{{count}}</div>
+        <input type="button" ng-click="click()" value="取消监听">
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="https://code.angularjs.org/1.5.5/angular.js"></script>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('myControll', ['$scope', function($scope){
+        $scope.name = "";
+        $scope.count=0;
+        $scope.click = $scope.$watch('name', function(newValue, oldValue) {
+            console.log(newValue);
+            console.log(oldValue);
+            $scope.count++;
+        });
+    }]);
+</script>

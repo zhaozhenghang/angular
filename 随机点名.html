@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://code.angularjs.org/1.5.5/angular.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div ng-app="app" ng-controller="suiji">
+			<div>{{name}}</div>
+			<button ng-click="start()">开始</button>
+			<button ng-click="stop()">结束</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = angular.module('app', []);
+		app.controller('suiji', ['$scope', '$interval', function($scope, $interval) {
+			$scope.names = ['张飞', '关羽', '赵云', '张三', '李四', '王五', '赵六', '盖伦', '拉科斯']
+			$scope.name = '张飞';
+			var timer = null;
+			//			$scope.start = function(){
+			//				clearInterval($scope.timer);
+			//				$scope.timer = setInterval(function(){
+			//					$scope.name = $scope.names[Math.floor(Math.random()*$scope.names.length)];
+			//					$scope.$apply();
+			//				},100);
+			//			}
+			//			$scope.stop = function(){
+			//				clearInterval($scope.timer);
+			//			}
+			$scope.start = function(){
+				$interval.cancel(timer);
+				timer = $interval(function() {
+					$scope.name = $scope.names[Math.floor(Math.random() * $scope.names.length)];
+				}, 100);
+			}
+			$scope.stop = function(){
+				$interval.cancel(timer)
+			}
+		}])
+	</script>
+
+</html>

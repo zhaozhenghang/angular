@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="https://code.angularjs.org/1.5.5/angular.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var myApp = angular.module('Myapp',[]);
+		</script>
+	</head>
+	<body ng-app ng-init="data = [{'name':'张三','age':'22'},{'name':'李四','age':'19'}]">
+		<div>{{"hello world"}}</div>
+		<div>{{4+5.55551 | number:1 }}</div>
+		<div><input type="text" ng-model="name" />{{name}}</div>
+		<br /><br />
+		<div ng-repeat="std in data">
+			<div>{{std.name}}</div>
+			<div>{{std.age}}</div>
+		</div>
+		<ul>
+			<li ng-repeat-start="dat in data">
+				{{dat.name}}
+			</li>
+			<li ng-repeat-end>
+				{{dat.age}}
+			</li>
+		</ul>
+	</body>
+</html>

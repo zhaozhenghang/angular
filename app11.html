@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://code.angularjs.org/1.5.5/angular.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="app"  ng-controller="jisuanqi">
+		<input type="text" ng-model="num1" name="" id="" value="" />
+		+<input type="text"  ng-model="num2" name="" id="" value="" />
+		<input type="button" ng-click="click()" name="" id="" value="=" />
+		{{result}}
+	</body>
+	<script type="text/javascript">
+		var myApp = angular.module('app',[])
+		myApp.controller('jisuanqi',['$scope',function($scope){
+			$scope.click = function(){
+				$scope.result = +$scope.num1 + +$scope.num2; 
+			}
+		}])
+	</script>
+</html>
