@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div ng-controller="OutterController">
+        <div ng-controller="InnerController">
+            <span>{{text}}</span>
+            <span>{{inner_text}}</span>
+            <input type="button" name="" ng-click="click_show()" value="继承">
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="https://code.angularjs.org/1.5.5/angular.js"></script>
+<script type="text/javascript">
+    angular.module('myApp', [])
+    .controller('OutterController', ['$scope', function($scope){
+        $scope.text="hello!Angular";
+        $scope.click_show = function(){
+            $scope.text = "单击按钮后的内容！";
+        };
+    }])
+    .controller('InnerController', ['$scope', function($scope){
+            $scope.inner_text = "欢迎来到Angular的世界";
+    }]);
+</script>
